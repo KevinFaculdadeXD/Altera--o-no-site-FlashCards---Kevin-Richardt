@@ -5,9 +5,9 @@ criarCartasManeiras(
 )
 
 criarCartasManeiras(
-    "Chads e Betas",
-    "Quem é o mais Beta",
-    "Dionathan"
+    "Resenha",
+    "Quando havera a resenha",
+    "6 de julho"
 )
 
 criarCartasManeiras(

@@ -1,19 +1,47 @@
-function criarCartasManeiras(categoria, perguntas, respostas) {
-    let container = document.getElementById('container')
-    let CartasManeiras = document.createElement('article')
-    CartasManeiras.className = 'CartasManeiras'
+// Selecionando os elementos
+const btnAdicionar = document.getElementById('btn-adicionar');
+const container = document.getElementById('container');
 
-    CartasManeiras.innerHTML = 
-    `<div class="conteudo">
-        <h3>${categoria}</h3>
+// Função para criar o card visualmente
+function criarCartasManeiras(categoria, pergunta, resposta) {
+    const cartao = document.createElement('article');
+    cartao.className = 'CartasManeiras';
+
+    cartao.innerHTML = `
+        <div class="conteudo">
             <div class="pergunta">
-                    ${perguntas}
+                <h3 style="color: #00ff88; font-size: 12px;">${categoria}</h3>
+                <p>${pergunta}</p>
             </div>
             <div class="resposta">
-                    ${respostas}
+                <p>${resposta}</p>
             </div>
-    </div>`
+        </div>
+    `;
 
+    // Faz o card girar ao clicar
+    cartao.addEventListener('click', () => {
+        cartao.classList.toggle('active');
+    });
 
-    container.appendChild(CartasManeiras)
+    container.appendChild(cartao);
 }
+
+// Função para pegar os dados do formulário
+btnAdicionar.addEventListener('click', () => {
+    const inputCategoria = document.getElementById('input-categoria');
+    const inputPergunta = document.getElementById('input-pergunta');
+    const inputResposta = document.getElementById('input-resposta');
+
+    if (inputPergunta.value === '' || inputResposta.value === '') {
+        alert("Preencha a pergunta e a resposta!");
+        return;
+    }
+
+    criarCartasManeiras(inputCategoria.value, inputPergunta.value, inputResposta.value);
+
+    // Limpa os campos
+    inputCategoria.value = '';
+    inputPergunta.value = '';
+    inputResposta.value = '';
+});
