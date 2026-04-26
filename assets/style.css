@@ -1,0 +1,73 @@
+body {
+    background-color: #1b1b1b;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    display: flex;
+    justify-content: center;
+    padding: 20px;
+}
+
+#container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+}
+
+/* Estrutura do Card */
+.CartasManeiras {
+    background-color: transparent;
+    width: 300px;
+    height: 200px;
+    perspective: 1000px; /* Necessário para o efeito 3D */
+    cursor: pointer;
+}
+
+.conteudo {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    transition: transform 0.6s;
+    transform-style: preserve-3d;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    border-radius: 10px;
+}
+
+/* Quando o card tiver a classe 'active', ele gira */
+.CartasManeiras.active .conteudo {
+    transform: rotateY(180deg);
+}
+
+.pergunta, .resposta {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden; /* Esconde o verso enquanto gira */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.pergunta {
+    background-color: #333;
+    color: #fff;
+    border: 2px solid #00ff88;
+}
+
+.pergunta h3 {
+    color: #00ff88;
+    margin-bottom: 10px;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+}
+
+.resposta {
+    background-color: #00ff88;
+    color: #1b1b1b;
+    transform: rotateY(180deg); /* O verso começa "de costas" */
+    font-weight: bold;
+}
